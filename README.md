@@ -97,3 +97,62 @@ Obs: Diferente das variáveis presentes no código main, os atributos das classe
 
 As variáveis nas quais atribuímos um novo objeto através da palavra reservada new guardam as referências (na memória) para aquele objeto e não o objeto em si.
 
+
+## Comportamentos ==> Métodos
+    
+    tipo retorno nome(argumentos){
+        código
+    }
+
+    public class Conta {
+
+        //ATRIBUTOS
+        double saldo;
+        int agencia;
+        int numero;
+        String titular;
+
+        //METODOS	
+        public void deposita(double valor) {
+            this.saldo += valor;
+        }
+
+        public boolean saca(double valor) {
+		if (this.saldo >= valor) {
+			this.saldo -= valor;
+			return true;
+		} else { 
+			return false;
+		}
+
+        public boolean transfere(double valor, Conta destino) {
+		if (this.saldo >= valor) {
+			this.saca(valor);
+			//destino.saldo += valor;
+			destino.deposita(valor);
+			return true;
+		}
+		return false;
+		
+	    }
+	}
+	
+
+
+Invocando o método
+
+        // ===> nomeDaReferencia.nomeDoMetodo();
+        
+        Conta contaDaBia = new Conta();
+		contaDaBia.saldo = 200;
+		contaDaBia.deposita(100);
+		contaDaBia.saca(17);
+		System.out.println("Bia, seu saldo é: " + contaDaBia.saldo);
+
+
+Obs: o método com retorno boolean pode ser atribuído a uma variável booleana como expressão booleana.
+
+
+
+
+
